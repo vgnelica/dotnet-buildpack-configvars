@@ -3,7 +3,7 @@
 file="../base_path.yml"
 name=$(cat "$file")
 
-if [ -n "$(find $name $1 -maxdepth 3 -iname Startup.cs)" ]; then
+if [ -n "$(find $name $1 -iname Startup.cs)" ]; then
   echo "ASP.NET Core" && exit 0
 else
   echo "no" && exit 1
