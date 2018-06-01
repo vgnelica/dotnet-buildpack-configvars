@@ -40,7 +40,7 @@ export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}"
 cd $BUILD_DIR
 dotnet --info
 
-name=$(curl -s -n 'https://api.heroku.com/apps/tadmin/config-vars' -H "Accept: application/vnd.heroku+json; version=3" | sed -n '/ *"base_path": *"/ { s///; s/".*//; p; }') | head -1)
+name=process.env.BASE_PATH
 
 if [ -z ${PROJECT_FILE:-} ]; then
 	PROJECT_FILE=$(x=$(dirname $(find ${BUILD_DIR} -maxdepth 5 -iname $name); while [[ "$x" =~ $BUILD_DIR ]] ; do find "$x" -maxdepth 1 -name *.csproj; x=`dirname "$x"`; done)
